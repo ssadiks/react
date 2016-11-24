@@ -14,7 +14,7 @@ render(
   document.getElementById('root')
 )
 
-import { addProduct, addToCart } from './actions/actions'
+import { addProduct, addToCart, fetchPosts } from './actions/actions'
 
 // Log the initial state
 console.log(store.getState())
@@ -25,7 +25,11 @@ let unsubscribe = store.subscribe(() =>
   console.log(store.getState())
 )
 
+var object ={"cart":0,"products":[{"id":1,"name":"iPad 4 Mini","price":500.01,"quantity":2},{"id":2,"name":"H&M T-Shirt White","price":10.99,"quantity":10},{"id":3,"name":"Charli XCX - Sucker CD","price":19.99,"quantity":5}]};
+
 // Dispatch some actions
+store.dispatch(fetchPosts(object.products))
+
 store.dispatch(addProduct('Nike', 120))
 store.dispatch(addProduct('Adidas', 140))
 store.dispatch(addProduct('Puma', 100))

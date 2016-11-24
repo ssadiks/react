@@ -29,6 +29,8 @@ const products = (state = [], action) => {
             return state.map(p =>
                 product(p, action)              
             )
+        case 'FETCH_POSTS':
+            return state = action
         default:
             return state
     }
