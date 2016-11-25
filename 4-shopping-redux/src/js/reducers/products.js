@@ -30,7 +30,7 @@ const products = (state = [], action) => {
                 product(p, action)              
             )
         case 'FETCH_POSTS':
-            return state = action
+            return state = action.payload
         default:
             return state
     }

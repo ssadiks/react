@@ -19,7 +19,7 @@ dbRef.on('value', snapshot => {
 
 const receiveProducts = products => ({
   type: 'FETCH_POSTS',
-  products: products
+  payload: products
 })
 
 export const getAllProducts = () => dispatch => {
@@ -28,16 +28,6 @@ export const getAllProducts = () => dispatch => {
             receiveProducts(snapshot.val())
         );
     });
-}
-
-export function fetchPosts() {
-  return dispatch => {
-    dbRef.on('value', snapshot => {
-        dispatch(
-            receiveProducts(snapshot.val())
-        );
-    });
-  };
 }
 
 export const addProduct = (name, price) => ({
