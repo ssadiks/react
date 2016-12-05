@@ -9,7 +9,7 @@ import CommentsInfos from "./CommentsInfos";
 export default class App extends React.Component {
   constructor() {
     super();
-    //this.addComment = this.addComment.bind(this)
+    //this.findIndexByKeyValue = this.findIndexByKeyValue.bind(this)
     this.state = {
       title: "Welcome",
       comments: [
@@ -44,30 +44,22 @@ export default class App extends React.Component {
     //})
   }
   
+  
+  
+  
+  
+  
   deleteCom(commentId) {
-    //var coms = this.state.comments
-    ////var toto = coms.slice(0, commentId-1).concat(coms.slice(commentId))
-    //var toto = [...coms.slice(0, commentId-1),
-    //            ...coms.slice(commentId)]
-    //console.log(commentId)
-    //console.log(coms)
-    //console.log(toto)
-    
     var coms = this.state.comments
-    var toto = coms.map(comment =>             
-        {
-          if(comment.id == commentId) {
-            console.log(commentId)
-            //var commentUpdated = Object.assign({}, comment, comment.likes++)
-            return []
-            
-          }
-        })
     
-    console.log(toto)
+    var i = findIndexByKeyValue(coms,"id", commentId)
+
+    //var toto = coms.slice(0, i).concat(coms.slice(i+1))
+    var toto = [...coms.slice(0, i),
+                ...coms.slice(i+1)]
         
     this.setState({
-      comments: coms
+      comments: toto
     })
   }
 
@@ -101,4 +93,13 @@ export default class App extends React.Component {
       </div>
     );
   }
+}
+
+const findIndexByKeyValue = (arraytosearch, key, valuetosearch) => { 
+  for (var i = 0; i < arraytosearch.length; i++) {     
+    if (arraytosearch[i][key] == valuetosearch) {
+      return i;
+    }
+  }
+  return null;
 }
