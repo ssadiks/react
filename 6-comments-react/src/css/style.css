@@ -42,6 +42,7 @@ body {
     margin: 0 0 20px 0;
     background: #333;
     padding: 20px;
+    position: relative;
 }
 .comment-user {
   display: flex;
@@ -49,11 +50,16 @@ body {
   margin: 0 0 10px 0;
 }
 .comment-user__name {
-    margin-right: 1rem;
-    text-transform: uppercase;
+  margin-right: 1rem;
+  text-transform: uppercase;
 }
 .comment-user__date {
-    color: #2199e8;
+  color: #2199e8;
+}
+.comment-user__like {
+  color: #ff63bf;
+  position: absolute;
+  right: 1.5rem;
 }
     
 .comment-user-avatar-wrap {

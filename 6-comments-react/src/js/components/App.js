@@ -36,6 +36,39 @@ export default class App extends React.Component {
     this.setState({
       comments: this.state.comments.concat([comment])
     })
+    //var coms = Object.assign({}, this.state.comments.concat([comment]))
+    //console.log(coms)
+    //coms.concat([comment])
+    //this.setState({
+    //  comments: coms
+    //})
+  }
+  
+  deleteCom(commentId) {
+    //var coms = this.state.comments
+    ////var toto = coms.slice(0, commentId-1).concat(coms.slice(commentId))
+    //var toto = [...coms.slice(0, commentId-1),
+    //            ...coms.slice(commentId)]
+    //console.log(commentId)
+    //console.log(coms)
+    //console.log(toto)
+    
+    var coms = this.state.comments
+    var toto = coms.map(comment =>             
+        {
+          if(comment.id == commentId) {
+            console.log(commentId)
+            //var commentUpdated = Object.assign({}, comment, comment.likes++)
+            return []
+            
+          }
+        })
+    
+    console.log(toto)
+        
+    this.setState({
+      comments: coms
+    })
   }
 
   changeTitle(title) {
@@ -43,17 +76,19 @@ export default class App extends React.Component {
   }
   
   likeCom(commentId) {
-    //console.log(this.state.comments[2])
-    {var coms = this.state.comments.map(comment =>             
-        {if(comment.id == commentId)
-          {comment.likes+1}
-          console.log(comment)
+    var coms = this.state.comments
+    coms.map(comment =>             
+        {
+          if(comment.id == commentId) {
+            //var commentUpdated = Object.assign({}, comment, comment.likes++)
+            return {...comment, ...comment.likes++}
+          }
         }
-    )}
+    )    
     
-    //this.setState({
-    //  comments: coms
-    //})
+    this.setState({
+      comments: coms
+    })
   }
 
   render() {
@@ -61,7 +96,7 @@ export default class App extends React.Component {
       <div>
         <Header changeTitle={this.changeTitle.bind(this)} title={this.state.title} />
         <CommentsInfos comments={this.state.comments} />
-        <CommentsList likeCom={this.likeCom.bind(this)} comments={this.state.comments} />
+        <CommentsList likeCom={this.likeCom.bind(this)} deleteCom={this.deleteCom.bind(this)} comments={this.state.comments} />
         <AddComment addComment={this.addComment.bind(this)} />
       </div>
     );
