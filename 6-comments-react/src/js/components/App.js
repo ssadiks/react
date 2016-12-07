@@ -12,19 +12,59 @@ export default class App extends React.Component {
     //this.addComment = this.addComment.bind(this)
     this.state = {
       title: "Welcome",
+      posts: [
+        {
+          title: "post 1",
+          comments: [
+             {
+              "id": "1",
+              "name": "soso",
+              "message": "yo les mecs\n",
+              "date_com": "1480600060328",
+              "likes": 0
+            },
+            {
+              "id": "2",
+              "name": "Mr Dupont",
+              "message": "Ravi de faire votre connaissance",
+              "date_com": "1450000000000",
+              "likes": 1
+            }
+          ]
+        },
+        {
+          title: "post 2",
+          comments: [
+             {
+              "id": "1",
+              "name": "soso",
+              "message": "yo les mecs\n",
+              "date_com": "1480600060328",
+              "likes": 0
+            },
+            {
+              "id": "2",
+              "name": "Mr Dupont",
+              "message": "Ravi de faire votre connaissance",
+              "date_com": "1450000000000",
+              "likes": 1
+            }
+          ]
+        }
+      ],
       comments: [
            {
             "id": "1",
             "name": "soso",
-            "message": "yo les mecs\n",
-            "date_com": "1480600060328",
+            "message": "cool",
+            "date_com": "1480600960328",
             "likes": 0
           },
           {
             "id": "2",
             "name": "Mr Dupont",
-            "message": "Ravi de faire votre connaissance",
-            "date_com": "1450000000000",
+            "message": "Ravissant",
+            "date_com": "1450900000000",
             "likes": 1
           }
       ]
@@ -57,7 +97,7 @@ export default class App extends React.Component {
     var toto = coms.map(comment =>             
         {
           if(comment.id == commentId) {
-            console.log(commentId)
+            console.log(comment.indexOf())
             //var commentUpdated = Object.assign({}, comment, comment.likes++)
             return []
             
