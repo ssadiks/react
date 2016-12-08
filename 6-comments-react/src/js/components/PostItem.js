@@ -1,8 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router';
 
-export default class PostItem extends React.Component {
-  render() {
-    return (<h1>User Profile for postId: {this.props.params.postId}</h1>);
-  }
-}
+const PostItem = ({post}) => 
+  (
+    <li>
+        <div className="comment-user">
+            <span className="comment-user__name"> {post.title } </span>
+            <Link to={'post/' + post.id }>En savoir +</Link>
+        </div>
+    </li>
+  )
 
+
+export default PostItem
