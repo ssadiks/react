@@ -17,13 +17,13 @@
 //};
 
 import React, {Component} from "react";
-import PostItem from "./PostItem"
+import PostsItem from "./PostsItem"
 
 const PostsList = ({posts}) => (
     <ul className="posts comment-list block-comments">    
     {      
         posts.map(post =>
-            <PostItem key={post.id}  post={post} />
+            <PostsItem key={post.id}  post={post} />
         )        
     }
     </ul>

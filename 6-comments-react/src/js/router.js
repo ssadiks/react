@@ -2,14 +2,12 @@ import React from 'react';
 import { Router, Route, hashHistory, browserHistory, IndexRoute } from 'react-router';
 
 // Layouts
-import MainLayout from './components/MainLayout';
+import MainLayout from './components/layouts/MainLayout';
 
 // Pages
 import Home from './components/Home';
-import PostsList from './components/PostsList';
-import PostItem from './components/PostItem';
-import App from "./components/App";
-import PostsContainer from "./components/PostsContainer";
+import PostsContainer from "./components/containers/PostsContainer";
+import PostContainer from "./components/containers/PostContainer";
 
 export default (
   <Router history={hashHistory}>
@@ -17,7 +15,7 @@ export default (
         <Route path="/" component={Home} />
         <Route path="posts">
             <IndexRoute component={PostsContainer} />
-            <Route path=":postId" component={PostItem} />
+            <Route path=":postId" component={PostContainer} />
         </Route>
     </Route>
   </Router>

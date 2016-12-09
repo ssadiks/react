@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import CommentItem from "./CommentItem"
+import CommentItem from "./CommentItem";
 
 const CommentsList = ({comments, likeCom, deleteCom}) => (
     <ul className="comment-list block-comments">    

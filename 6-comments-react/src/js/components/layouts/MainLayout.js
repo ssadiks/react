@@ -10,7 +10,6 @@ export default class MainLayout extends React.Component {
           <ul>
             <li><Link to="/" activeClassName="active">Home</Link></li>
             <li><Link to="/posts" activeClassName="active">Posts</Link></li>
-            <li><Link to="/coms" activeClassName="active">Coms</Link></li>
           </ul>
         </aside>
         <main>
