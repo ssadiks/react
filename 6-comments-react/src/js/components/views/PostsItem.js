@@ -7,7 +7,7 @@ const PostsItem = ({post}) =>
         <div className="comment-user">
             <span className="comment-user__name"> {post.title } </span>
             <span className="comment-user__name"> {post.likes } Likes </span>
-            <Link to={'posts/' + post.id }>En savoir +</Link>
+            <Link to={'posts/' + post._id }>En savoir +</Link>
         </div>
     </li>
   )

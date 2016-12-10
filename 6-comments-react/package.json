@@ -4,6 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
+    "axios": "^0.15.3",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.2",
@@ -14,6 +15,8 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "express": "^4.14.0",
+    "mongoose": "~4.6.5",
+    "body-parser": "~1.15.2",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-router": "3.0.0",

@@ -5,8 +5,8 @@ const CommentsList = ({comments, likeCom, deleteCom}) => (
     <ul className="comment-list block-comments">    
     {      
         comments.map(comment =>
-            <CommentItem key={comment.id}  comment={comment} onClicky={() => likeCom(comment.id)} onClickDelete={() => deleteCom(comment.id)} />
-        )        
+            <CommentItem key={comment._id}  comment={comment} onClicky={() => likeCom(comment._id)} onClickDelete={() => deleteCom(comment._id)} />
+        )
     }
     </ul>
 )

@@ -9,13 +9,11 @@ export default class AddComment extends Component {
     handleSubmit(e) {
         e.preventDefault()
         var timestamp = (new Date()).getTime()
-        console.log(timestamp)
         var comment = {
-            id: timestamp,
-            name: this.refs.name.value,
-            message: this.refs.message.value,
-            date_com: timestamp,
-            likes: 0
+            "name": this.refs.name.value,
+            "message": this.refs.message.value,
+            "date_com": timestamp,
+            "likes": 0
         }
         this.props.addComment(comment)
         this.refs.commentForm.reset()

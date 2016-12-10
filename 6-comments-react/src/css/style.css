@@ -85,3 +85,7 @@ body {
     margin: 0;
   }
 }
+
+.button {
+  margin-right: 1rem;
+}
