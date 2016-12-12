@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 /**
- * Get users
+ * Get Posts
  */
 
 export function getPosts() {
@@ -10,7 +10,7 @@ export function getPosts() {
 }
 
 /**
- * Get user
+ * Get Post
  */
 
 export function getPost(postId) {
@@ -19,7 +19,20 @@ export function getPost(postId) {
 }
 
 /**
- * Delete a user
+ * Add a Post
+ */
+
+export function addPost(post) {
+    return axios.post('http://localhost:3030/api/posts/', post)
+      .then(response => response.data)
+      .catch(function (error) {
+          console.log(error);
+        });
+
+}
+
+/**
+ * Delete a Post
  */
 
 export function deletePost(postId) {
@@ -46,12 +59,10 @@ export function updatePost(postId, post) {
 
 export function addComment(postId, comment) {
     return axios.post('http://localhost:3030/api/posts/' + postId + '/comments', comment)
-        .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+      .then(response => response.data)
+      .catch(function (error) {
+        console.log(error);
+      });
 }
 
 /**
@@ -67,7 +78,7 @@ export function deleteComment(postId, commentId) {
  */
 
 export function updateComment(postId, commentId, comment) {
-    return axios.put('http://localhost:3030/api/posts/' + postId + '/comments' + commentId, comment)
+    return axios.put('http://localhost:3030/api/posts/' + postId + '/comments/' + commentId, comment)
         .then(function (response) {
             console.log(response);
           })

@@ -30,9 +30,9 @@ export default class PostContainer extends React.Component {
   }
   
   addComment(comment) {
-    postApi.addComment(this.props.params.postId, comment).then(() => {
+    postApi.addComment(this.props.params.postId, comment).then(commentAdded => {
       this.setState({
-        post: {comments: this.state.post.comments.concat([comment])}
+        post: {comments: this.state.post.comments.concat([commentAdded])}
       })
     })
   }
@@ -40,7 +40,8 @@ export default class PostContainer extends React.Component {
   deleteCom(commentId) {
     var post = this.state.post
     postApi.deleteComment(this.props.params.postId, commentId).then(() => {
-      var i = findIndexByKeyValue(post.comments,"id", commentId)
+      var i = findIndexByKeyValue(post.comments,"_id", commentId)
+      console.log(i);
       var newComments = [...post.comments.slice(0, i),
                   ...post.comments.slice(i+1)]
   
@@ -53,21 +54,23 @@ export default class PostContainer extends React.Component {
   
   likeCom(commentId) {
     var coms = this.state.post.comments;
-    //postApi.updateComment(this.props.params.postId, commentId, comment).then(() => {
-    //  
-    //})
+    var commentUpdated = {};    
     
     coms.map(comment =>             
-        {
-          if(comment._id == commentId) {
-            //var commentUpdated = Object.assign({}, comment, comment.likes++)
-            return {...comment, ...comment.likes++}
-          }
+      {
+        if(comment._id == commentId) {
+          //commentUpdated = Object.assign({}, comment, comment.likes++)            
+          commentUpdated = {...comment, ...comment.likes++}
         }
-    )    
-    this.setState({
-      comments: coms
+      }
+    )
+    
+    postApi.updateComment(this.props.params.postId, commentId, commentUpdated).then(() => {
+      this.setState({
+        comments: coms
+      })
     })
+    
   }
 
   render() {

@@ -89,3 +89,15 @@ body {
 .button {
   margin-right: 1rem;
 }
+
+.post__cta-delete {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+}
+
+.post__cta-more {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+}

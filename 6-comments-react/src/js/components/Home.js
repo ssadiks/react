@@ -2,20 +2,33 @@ import React from 'react';
 
 const Home = React.createClass({
   render: function() {
+    var dataPost = {
+      "title": "The Knicks on the rise",
+      "text": "The Knicks dominate the Lakers after an exciting match: final score (118 - 112)",
+      "likes": 0,
+      "comments": [
+      {
+        "name": "Melo",
+        "message": "Porzingis's Day",
+        "date_com": "1481538399429",
+        "likes": 0,
+        "_id": "584e7b5fa5ec222988121e2b"
+      }
+    ]
+    }
     return (
       <div className="home-page">
-        <h1>The app has NCTPS</h1>
+        <h1>B L O G  -  R E A C T</h1>
+        <h2>Example : Json Post</h2>
+        <div><pre><code>{JSON.stringify(dataPost, null, 2) }</code></pre></div>
         <p>
-          While the <a href="https://css-tricks.com/learning-react-router/">CSS-Tricks article</a> for
-          this guide covers an explanation of <strong>NCTPS</strong>, there
-          are still many implementation details in this code that the article
-          doesn't cover. For a better understanding of those details, see
-          the <a href="https://github.com/bradwestfall/CSS-Tricks-React-Series">Github documentation</a> for
-          this guide.
+          FRONT : ReactJs
         </p>
         <p>
-          As far as the [Search Title] and [Total Results] that you'll see on the results page,
-          those are static for now. We will make them dynamic in the third guide.
+          BACK : Mongoose + Express
+        </p>
+        <p>
+          Github : <a href="https://github.com/ssadiks">ssadiks</a>
         </p>
       </div>
     );
