@@ -3,6 +3,7 @@ import React from "react";
 import PostsList from "../views/PostsList";
 import PostsAdding from "../views/PostsAdding";
 import * as postApi from '../../api/post-api';
+import findIndexByKeyValue from "../../modules/findIndexByKeyValue";
 
 export default class PostsContainer extends React.Component {
   constructor() {
@@ -12,12 +13,14 @@ export default class PostsContainer extends React.Component {
     };
   }
   
+  /* Get Posts */
   componentDidMount() {
     postApi.getPosts().then(posts => {
       this.setState({posts: posts})
     })
   }
   
+  /* Add Post */
   addPost(post) {
     postApi.addPost(post).then(postAdded => {
       var newPosts = this.state.posts.concat([postAdded])
@@ -25,6 +28,7 @@ export default class PostsContainer extends React.Component {
     })    
   }
   
+  /* Delete Post */
   deletePost(postId) {
     var posts = this.state.posts      
     postApi.deletePost(postId).then(() => {
@@ -47,13 +51,4 @@ export default class PostsContainer extends React.Component {
       </div>
     );
   }
-}
-
-const findIndexByKeyValue = (arraytosearch, key, valuetosearch) => { 
-  for (var i = 0; i < arraytosearch.length; i++) {     
-    if (arraytosearch[i][key] == valuetosearch) {
-      return i;
-    }
-  }
-  return null;
 }

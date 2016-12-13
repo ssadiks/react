@@ -164,8 +164,7 @@ var createComment = function (req, res) {
 		post.save(function(err) {
 		  if (err)
         res.send(err);
-    // send last comment in the array
-		res.json(post.comments[post.comments.length-1]);
+		res.json(post);
 	  });
 	} else {
 	  res.json({ message: 'Post doesn\'t exists' });
@@ -202,9 +201,9 @@ var deleteComment = function (req, res) {
 	{"_id" : req.params.post_id},
 	{ $pull : {"comments" : {"_id" : req.params.comment_id } } },
 	function(err, val) {
-	  if (err)
-		  res.send(err);
-		res.json({ message: 'Comment deleted' });
+		if (err)
+			res.send(err);
+		  res.json({ message: 'Comment deleted' });
 	}
   )
 }

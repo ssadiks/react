@@ -101,3 +101,19 @@ body {
   bottom: 0.5rem;
   right: 1rem;
 }
+
+.post__like {
+  float: right;
+}
+
+.menu {
+  margin-bottom: 1rem;
+}
+
+.menu li {
+  /*border-right: 1px solid #fff;*/
+}
+
+.menu li:first-child {
+  margin-right: 2rem;
+}
