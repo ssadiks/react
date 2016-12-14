@@ -21,9 +21,10 @@ const Home = React.createClass({
         <h1>B L O G  -  R E A C T</h1>
         <h2>Example : Json Post</h2>
         <div><pre><code>{JSON.stringify(dataPost, null, 2) }</code></pre></div>
+        <p>Command Run Server Api on <a href="localhost:3030/api/posts">port 3030</a> => node server/server.js</p>
         <p>
           FRONT : ReactJs
-        </p>
+        </p> 
         <p>
           BACK : Mongoose + Express
         </p>

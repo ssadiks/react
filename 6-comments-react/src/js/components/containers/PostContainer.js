@@ -7,6 +7,7 @@ import CommentsList from "../views/CommentsList";
 import CommentAdding from "../views/CommentAdding";
 import CommentsInfos from "../views/CommentsInfos";
 
+import { Link } from 'react-router';
 import findIndexByKeyValue from "../../modules/findIndexByKeyValue";
 
 export default class PostContainer extends React.Component {
@@ -108,6 +109,7 @@ export default class PostContainer extends React.Component {
         <CommentsInfos comments={this.state.post.comments} />
         <CommentsList likeCom={this.likeCom.bind(this)} deleteCom={this.deleteCom.bind(this)} comments={this.state.post.comments} />
         <CommentAdding addComment={this.addComment.bind(this)} />
+        <Link className="button" to={'posts'}>Back</Link>
       </div>
     );
   }
