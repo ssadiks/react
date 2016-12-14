@@ -1,12 +1,16 @@
 import axios from 'axios';
-
+import store from '../store';
+import { getPostsSuccess, deletePostSuccess } from '../actions/actions';
 /**
  * Get Posts
  */
 
 export function getPosts() {
   return axios.get('http://localhost:3030/api/posts')
-    .then(response => response.data);
+    .then(response => {
+      store.dispatch(getPostsSuccess(response.data));
+      return response;  
+    });
 }
 
 /**
@@ -24,7 +28,9 @@ export function getPost(postId) {
 
 export function addPost(post) {
     return axios.post('http://localhost:3030/api/posts/', post)
-      .then(response => response.data)
+      .then(response => {
+        store.dispatch(getPostsSuccess(response.data.id));
+      })
       .catch(function (error) {
           console.log(error);
         });
