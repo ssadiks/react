@@ -1,6 +1,7 @@
 import axios from 'axios';
 import store from '../store';
 import { getPostsSuccess, deletePostSuccess } from '../actions/actions';
+//import * as types from '../actions/actionTypes';
 /**
  * Get Posts
  */
@@ -9,6 +10,10 @@ export function getPosts() {
   return axios.get('http://localhost:3030/api/posts')
     .then(response => {
       store.dispatch(getPostsSuccess(response.data));
+      //store.dispatch({
+      //  type: types.GET_POSTS_SUCCESS,
+      //  posts: response.data
+      //});
       return response;  
     });
 }
@@ -42,7 +47,11 @@ export function addPost(post) {
  */
 
 export function deletePost(postId) {
-  return axios.delete('http://localhost:3030/api/posts/' + postId);
+  return axios.delete('http://localhost:3030/api/posts/' + postId)
+    .then(response => {
+      store.dispatch(deletePostSuccess(postId));
+      return response;
+    });
 }
 
 /**
