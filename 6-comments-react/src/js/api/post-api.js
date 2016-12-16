@@ -1,6 +1,6 @@
 import axios from 'axios';
 import store from '../store';
-import { getPostsSuccess, deletePostSuccess } from '../actions/actions';
+import { addPostSuccess, updatePostSuccess, getPostsSuccess, deletePostSuccess } from '../actions/actions';
 //import * as types from '../actions/actionTypes';
 /**
  * Get Posts
@@ -34,7 +34,7 @@ export function getPost(postId) {
 export function addPost(post) {
     return axios.post('http://localhost:3030/api/posts/', post)
       .then(response => {
-        store.dispatch(getPostsSuccess(response.data.id));
+        store.dispatch(addPostSuccess(response.data));
       })
       .catch(function (error) {
           console.log(error);
@@ -61,11 +61,12 @@ export function deletePost(postId) {
 export function updatePost(postId, post) {
     return axios.put('http://localhost:3030/api/posts/' + postId, post)
         .then(function (response) {
-            console.log(response);
+          store.dispatch(updatePostSuccess(postId, post));
+            return response;
           })
-        .catch(function (error) {
-          console.log(error);
-        });
+          .catch(function (error) {
+            console.log(error);
+          });
 }
 
 /**

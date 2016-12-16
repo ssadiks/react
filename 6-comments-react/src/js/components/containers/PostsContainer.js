@@ -20,6 +20,7 @@ const PostsContainer = React.createClass({
     return (
       <div>
         <PostsList posts={this.props.posts} deletePost={postApi.deletePost} />
+        <PostsAdding addPost={postApi.addPost}/>
       </div>
     );
   }

@@ -10,16 +10,16 @@ const postReducer = function(state = initialState, action) {
     switch(action.type) {
         
         case types.GET_POSTS_SUCCESS:
-            return {...state, ...state.posts = action.posts}
+            return Object.assign({}, state, { posts: action.posts })
+        case types.ADD_POST_SUCCESS:
+            const newPostsAfterAdd = state.posts.concat(action.post)
+            return {...state, ...state.posts = newPostsAfterAdd}
+        case types.UPDATE_POST_SUCCESS:
+            //const newPostsAfterUpdate = state.posts.concat(action.post)
+            //return {...state, ...state.posts}
         case types.DELETE_POST_SUCCESS:
-            console.log(state)
-            //const newPosts = _.filter(state.posts, post => post.id != action.postId);
-            //const tutu = _.filter(state.posts, function(post) {
-            //    return post.id != action.postId
-            //  })
-            //console.log(state)
-            //console.log(tutu)
-            //return {...state, ...state.posts = tutu}
+            const newPostsAfterDelete = _.filter(state.posts, post => post._id != action.postId);
+            return {...state, ...state.posts = newPostsAfterDelete}
     }
     
     return state;
