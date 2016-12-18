@@ -5,7 +5,7 @@ const PostInfos = ({post, likePost}) => (
         <div>
           <h1>{post.title}</h1>
           <div className="post__like">            
-            <button className="button" onClick={() => likePost(post._id)}>Like</button>
+            <button className="button" onClick={() => likePost(post._id, post)}>Like</button>
             <span className="comments-infos__item count-likes">{post.likes} Likes</span>
           </div>
           

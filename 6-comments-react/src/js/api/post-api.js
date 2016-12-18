@@ -1,6 +1,6 @@
 import axios from 'axios';
 import store from '../store';
-import { addPostSuccess, updatePostSuccess, getPostsSuccess, deletePostSuccess } from '../actions/actions';
+import { addPostSuccess, updatePostSuccess, getPostsSuccess, deletePostSuccess, getPostSuccess, addCommentSuccess } from '../actions/actions';
 //import * as types from '../actions/actionTypes';
 /**
  * Get Posts
@@ -24,7 +24,9 @@ export function getPosts() {
 
 export function getPost(postId) {
   return axios.get('http://localhost:3030/api/posts/' + postId)
-    .then(response => response.data);
+    .then(response => {
+      store.dispatch(getPostSuccess(response.data));
+    })
 }
 
 /**
@@ -58,10 +60,29 @@ export function deletePost(postId) {
  * Update a Post
  */
 
-export function updatePost(postId, post) {
-    return axios.put('http://localhost:3030/api/posts/' + postId, post)
+//export function updatePost(postId, post) {
+//    return axios.put('http://localhost:3030/api/posts/' + postId, post)
+//        .then(function (response) {
+//          store.dispatch(updatePostSuccess(postId, post));
+//            return response;
+//          })
+//          .catch(function (error) {
+//            console.log(error);
+//          });
+//}
+
+/**
+ * Like a Post
+ */
+
+export function likePost(postId, post) {
+  //console.log(postId)
+  let postUpdated = {}
+  postUpdated = {...post, ...post.likes++}
+  //console.log(postUpdated)
+    return axios.put('http://localhost:3030/api/posts/' + postId, postUpdated)
         .then(function (response) {
-          store.dispatch(updatePostSuccess(postId, post));
+          store.dispatch(updatePostSuccess(postId, postUpdated))
             return response;
           })
           .catch(function (error) {
@@ -75,7 +96,10 @@ export function updatePost(postId, post) {
 
 export function addComment(postId, comment) {
     return axios.post('http://localhost:3030/api/posts/' + postId + '/comments', comment)
-      .then(response => response.data)
+      .then(response => {
+        store.dispatch(addCommentSuccess(postId, comment))
+        return response;
+      })
       .catch(function (error) {
         console.log(error);
       });

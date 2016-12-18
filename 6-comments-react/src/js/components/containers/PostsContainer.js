@@ -1,12 +1,12 @@
 import React from "react";
+import { connect } from 'react-redux';
+import store from '../../store';
 
 import PostsList from "../views/PostsList";
 import PostsAdding from "../views/PostsAdding";
 import * as postApi from '../../api/post-api';
 import findIndexByKeyValue from "../../modules/findIndexByKeyValue";
 
-import { connect } from 'react-redux';
-import store from '../../store';
 
 const PostsContainer = React.createClass({
 

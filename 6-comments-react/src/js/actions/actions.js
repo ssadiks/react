@@ -16,9 +16,24 @@ export function addPostSuccess(post) {
 
 export function updatePostSuccess(postId, post) {
     return {
-        type: types.ADD_POST_SUCCESS,
+        type: types.UPDATE_POST_SUCCESS,
         postId,
         post
+    }
+}
+/*PostContainer*/
+export function getPostSuccess(post) {
+    return {
+        type: types.GET_POST_SUCCESS,
+        post
+    }
+}
+
+export function addCommentSuccess(postId, comment) {
+    return {
+        type: types.ADD_COMMENT_SUCCESS,
+        postId,
+        comment
     }
 }
 
