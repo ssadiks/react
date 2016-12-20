@@ -26,7 +26,7 @@ const Home = React.createClass({
           FRONT : ReactJs
         </p> 
         <p>
-          BACK : Mongoose + Express
+          BACK : NodeJs(Express) | Mongoose | MongoDb
         </p>
         <p>
           Github : <a href="https://github.com/ssadiks">ssadiks</a>

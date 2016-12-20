@@ -15,7 +15,8 @@ export default class AddComment extends Component {
             "date_com": timestamp,
             "likes": 0
         }
-        this.props.addComment(comment)
+        
+        this.props.addComment(this.props.post._id, comment)
         this.refs.commentForm.reset()
     }
     

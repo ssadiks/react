@@ -29,17 +29,28 @@ export function getPostSuccess(post) {
     }
 }
 
-export function addCommentSuccess(postId, comment) {
-    return {
-        type: types.ADD_COMMENT_SUCCESS,
-        postId,
-        comment
-    }
-}
 
 export function deletePostSuccess(postId) {
     return {
         type: types.DELETE_POST_SUCCESS,
         postId
+    }
+}
+
+export function deleteCommentSuccess(postId, commentId) {
+    return {
+        type: types.DELETE_COMMENT_SUCCESS,
+        postId,
+        commentId
+    }
+}
+
+
+export function likeCommentSuccess(postId, commentId, comment) {
+    return {
+        type: types.LIKE_COMMENT_SUCCESS,
+        postId,
+        commentId,
+        comment
     }
 }

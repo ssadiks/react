@@ -21,7 +21,9 @@ const PostContainer = React.createClass({
     return (
       <div>
         <PostInfos post={this.props.post} likePost={postApi.likePost} />
-        <CommentAdding addComment={postApi.addComment} />
+        <CommentsInfos comments={this.props.post.comments} />
+        <CommentsList likeCom={postApi.likeComment} deleteCom={postApi.deleteComment} post={this.props.post} />
+        <CommentAdding post={this.props.post} addComment={postApi.addComment} />
         <Link className="button" to={'posts'}>Back</Link>
       </div>
     );

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import store from '../store';
-import { addPostSuccess, updatePostSuccess, getPostsSuccess, deletePostSuccess, getPostSuccess, addCommentSuccess } from '../actions/actions';
+import { addPostSuccess, updatePostSuccess, getPostsSuccess, deletePostSuccess, getPostSuccess, addCommentSuccess, deleteCommentSuccess, likeCommentSuccess } from '../actions/actions';
 //import * as types from '../actions/actionTypes';
 /**
  * Get Posts
@@ -81,13 +81,13 @@ export function likePost(postId, post) {
   postUpdated = {...post, ...post.likes++}
   //console.log(postUpdated)
     return axios.put('http://localhost:3030/api/posts/' + postId, postUpdated)
-        .then(function (response) {
-          store.dispatch(updatePostSuccess(postId, postUpdated))
-            return response;
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+      .then(function (response) {
+        store.dispatch(updatePostSuccess(postId, postUpdated))
+        return response;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 }
 
 /**
@@ -97,12 +97,12 @@ export function likePost(postId, post) {
 export function addComment(postId, comment) {
     return axios.post('http://localhost:3030/api/posts/' + postId + '/comments', comment)
       .then(response => {
-        store.dispatch(addCommentSuccess(postId, comment))
-        return response;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+        store.dispatch(getPostSuccess(response.data))
+          return response;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
 }
 
 /**
@@ -110,20 +110,41 @@ export function addComment(postId, comment) {
  */
 
 export function deleteComment(postId, commentId) {
-  return axios.delete('http://localhost:3030/api/posts/' + postId + '/comments/' + commentId);
+  return axios.delete('http://localhost:3030/api/posts/' + postId + '/comments/' + commentId)
+    .then(function (response) {
+      store.dispatch(deleteCommentSuccess(postId, commentId))
+      return response;
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 /**
  * Update a comment
  */
 
-export function updateComment(postId, commentId, comment) {
-    return axios.put('http://localhost:3030/api/posts/' + postId + '/comments/' + commentId, comment)
-        .then(function (response) {
-            console.log(response);
-          })
-        .catch(function (error) {
-          console.log(error);
-        });
+//export function updateComment(postId, commentId, comment) {
+//    return axios.put('http://localhost:3030/api/posts/' + postId + '/comments/' + commentId, comment)
+//        .then(function (response) {
+//            console.log(response);
+//          })
+//        .catch(function (error) {
+//          console.log(error);
+//        });
+//}
+
+export function likeComment(postId, commentId, comment) {
+    let comUpdated = {}
+    comUpdated = {...comment, ...comment.likes++}
+    return axios.put('http://localhost:3030/api/posts/' + postId + '/comments/' + commentId, comUpdated)
+      .then(function (response) {
+          store.dispatch(likeCommentSuccess(postId, commentId, comUpdated))
+          return response;
+        })
+      .catch(function (error) {
+        console.log(error);
+      });
 }
+
 
