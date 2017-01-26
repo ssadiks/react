@@ -54,3 +54,10 @@ export function likeCommentSuccess(postId, commentId, comment) {
         comment
     }
 }
+
+//export function setVisibiltyFilter(filter) {
+//    return {
+//        type: types.SET_VISIBILITY_FILTER,
+//        filter
+//    }
+//}
