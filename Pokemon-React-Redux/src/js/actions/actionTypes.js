@@ -1,0 +1,6 @@
+/*
+ * action types
+ */
+
+export const GET_POKEMONS_SUCCESS = 'GET_POKEMONS_SUCCESS'
+export const GET_POKEMON_SUCCESS = 'GET_POKEMON_SUCCESS'

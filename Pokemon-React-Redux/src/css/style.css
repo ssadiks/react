@@ -1,0 +1,66 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Lato", "Lucida Grande","Lucida Sans Unicode", Tahoma, Sans-Serif;
+  line-height: 1.5;
+  padding: 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: #000;
+}
+a:hover {
+  color: #000;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+.title {
+  color: #e10093;
+}
+.pokemonItem {
+  border: 1px solid #e3e3e3;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  /*max-height: 250px;*/
+}
+.pokemonItem__img {
+  background: #f4f4f4;
+  max-height: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+.pokemonItem__img img {
+  max-height: 170px;
+}
+
+.pokemonItem__txt {
+  padding-left: 2rem;
+}
+
+.pokemonItem__name {
+  font-weight: bold;
+  color: #000; 
+}
+
+.cta-more {
+  color: #bdbdbd;
+}
+.cta-more:hover {
+  color: #97969a;
+}
+
+.pokemon__list__item {
+  border-top: 1px solid #e2e2e2;
+}
