@@ -12,14 +12,14 @@ const PokemonContainer = React.createClass({
   
   /* Get Post By Id Url */
   componentDidMount() {
-    let pokemonId = this.props.params.charactersId    
+    let pokemonId = this.props.params.pokemonsId    
     pokemonApi.getPokemon(pokemonId)
   },
   render() {
     return (
       <div>
         <PokemonInfos pokemon={this.props.pokemon} />
-        <Link className="button" to={'characters'}>Back</Link>
+        <Link className="button" to={'pokemons'}>Back</Link>
       </div>
     );
   }

@@ -4,16 +4,19 @@ import _ from 'lodash';
 const initialState = {
     pokemons: [],
     pokemon: {
-        id: null,
-        name: null,
-        description: null,
-        thumbnail: {},
-        comics: {
-            items: []    
-        },
-        series: {
-            items: []
-        }
+        abilities: [{
+            slot: '',
+            is_hidden: '',
+            ability: {
+                url: '',
+                name: ''
+            }
+        }],
+        forms: [{
+            name: '',
+            url: ''
+        }],
+        sprites: []
     }
 };
 

@@ -1,18 +1,16 @@
 import React, { Component } from "react";
 import { Link } from 'react-router';
 
-const ComicItem = ({comic}) => {
-    
+const AbilitiesItem = ({ability}) => {
+    {console.log(ability)}
     return (
     <li>
         <div className="pokemon__list__item">
-            <a href={comic.resourceURI}>
-                <span className=""> {comic.name } </span>
-            </a>
+            <span className=""> {ability.ability.name } </span>
         </div>
     </li>
     )
     
 }
 
-export default ComicItem
+export default AbilitiesItem

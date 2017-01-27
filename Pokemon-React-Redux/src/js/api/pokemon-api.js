@@ -23,9 +23,9 @@ export function getPokemons() {
  */
 
 export function getPokemon(pokemonId) {
-  return axios.get('http://pokeapi.co/api/v2/pokemon' + pokemonId)
+  return axios.get('http://pokeapi.co/api/v2/pokemon/' + pokemonId)
     .then(response => {
-        console.log(response)
-      store.dispatch(getPokemonSuccess(response));
+        console.log(response.data)
+      store.dispatch(getPokemonSuccess(response.data));
     })
 }

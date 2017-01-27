@@ -1,22 +1,21 @@
 import React, {Component} from "react";
 import { Link } from 'react-router';
 
-import ComicsList from "./ComicsList";
-import SeriesList from "./SeriesList";
+import AbilitiesList from "./AbilitiesList";
 
-const MarvelInfos = ({pokemon}) => (
+const PokemonInfos = ({pokemon}) => {
+    return (    
     <div className="row">
         <h2 className="title">Fiche d'identité :</h2>
         <div className="medium-4 columns">
-            <img src={pokemon.thumbnail.path + "." + pokemon.thumbnail.extension} alt={pokemon.name}/>
+            <h1>{pokemon.forms[0].name}</h1>
+            <img src={pokemon.sprites.front_default} />
         </div>
-        <div className="medium-8 columns">
-            <h1>{pokemon.name}</h1>
-            <p>{pokemon.description}</p>
-            <ComicsList pokemon={pokemon} />
-            <SeriesList pokemon={pokemon} />
+        <div className="medium-8 columns">            
+            <AbilitiesList pokemon={pokemon} />
         </div>        
     </div>
-)
+    )
+}
     
-export default MarvelInfos
+export default PokemonInfos

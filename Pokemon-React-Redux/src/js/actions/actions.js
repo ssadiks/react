@@ -15,3 +15,10 @@ export function getPokemonSuccess(pokemon) {
     }
 }
 
+export function setVisibilityFilter(filter) {
+    //console.log(filter)
+    return {
+        type: types.SET_VISIBILITY_FILTER,
+        filter
+    }
+}
