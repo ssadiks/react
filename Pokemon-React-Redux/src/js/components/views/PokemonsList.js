@@ -4,7 +4,6 @@ import PokemonsItem from "./PokemonsItem"
 const PokemonsList = ({pokemons}) => (
     <div>
         <h2 className="title">Reactive Pokedex Frontend CS</h2>
-        <button>Refresh App</button>
         <ul className="row">
         {
             pokemons.map(pokemon =>

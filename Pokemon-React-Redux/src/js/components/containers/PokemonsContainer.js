@@ -16,7 +16,7 @@ const PokemonsContainer = React.createClass({
   render() {
     return (
       <div>
-        <PokemonsFiltering onChange={setVisibleFilter.bind(this)}/>
+        <PokemonsFiltering onChange={setVisibleFilter.bind(this)} refreshApp={pokemonApi.getPokemons}/>
         <PokemonsList pokemons={this.props.pokemons} />
       </div>
     );
@@ -24,27 +24,28 @@ const PokemonsContainer = React.createClass({
 })
 
 const getVisiblePokemons = (pokemons, theFilter) => {
-  //theFilter.toLowerCase();
-  console.log(theFilter)
-  return pokemons;
-}
 
-const setVisibleFilter = function(filter) {
-  //console.log(filter)
-  store.dispatch(setVisibilityFilter(filter))
+  function pokExists (pok) {
+    return (pok.name.indexOf(theFilter.toLowerCase()) != -1)
+  }
+  if(theFilter !== undefined) {
+    let pokTrouves = pokemons.filter(pokExists)
+    return pokTrouves;
+  } else {
+    return pokemons;
+  }  
   
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onChange: () => {
-      dispatch(setVisibilityFilter(ownProps.filter))
-    }
-  }
+const refreshApp = function() {
+  console.log('refresh')
+}
+
+const setVisibleFilter = function(filter) {
+  store.dispatch(setVisibilityFilter(filter))  
 }
 
 const mapStateToProps = function(store) {
-  console.log(store.visibilityFilterState.filter)
   return {
     pokemons: getVisiblePokemons(store.pokemonsState.pokemons, store.visibilityFilterState.filter),
     filter: store.visibilityFilterState.filter

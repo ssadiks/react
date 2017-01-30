@@ -12,7 +12,6 @@ import { getPokemonsSuccess, getPokemonSuccess } from '../actions/actions';
 export function getPokemons() {
   return axios.get('http://pokeapi.co/api/v2/pokemon')
     .then(response => {
-        console.log(response)
       store.dispatch(getPokemonsSuccess(response.data.results));
       return response;  
     });
@@ -25,7 +24,6 @@ export function getPokemons() {
 export function getPokemon(pokemonId) {
   return axios.get('http://pokeapi.co/api/v2/pokemon/' + pokemonId)
     .then(response => {
-        console.log(response.data)
       store.dispatch(getPokemonSuccess(response.data));
     })
 }

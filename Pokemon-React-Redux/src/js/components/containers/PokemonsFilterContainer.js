@@ -11,7 +11,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onChange: () => {
-        console.log("tutu")
       dispatch(setVisibilityFilter(ownProps.filter))
     }
   }

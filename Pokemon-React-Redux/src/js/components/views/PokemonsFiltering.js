@@ -1,9 +1,10 @@
  import React, {Component} from "react";
 
-const PokemonsFiltering = ({onChange}) => (
+const PokemonsFiltering = ({onChange, refreshApp}) => (
     <div className="posts-filter">
         <h2>Search Pokemon</h2>
-        <input type="text" onKeyUp={e => onChange(e.target.value)} />
+        <button className="button" onClick={() => refreshApp}>Refresh App</button>
+        <input type="text" placeholder="Search" onKeyUp={e => onChange(e.target.value)} />
     </div>
 )
     
