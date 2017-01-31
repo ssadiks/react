@@ -2,7 +2,7 @@ import axios from 'axios';
 import crypto from 'crypto';
 
 import store from '../store';
-import { getPokemonsSuccess, getPokemonSuccess } from '../actions/actions';
+import { fetchPokemonsRequest, fetchPokemonsSuccess, fetchPokemonsFailure, getPokemonSuccess, fetchPokemonSuccess } from '../actions/actions';
 
 
 /**
@@ -10,11 +10,16 @@ import { getPokemonsSuccess, getPokemonSuccess } from '../actions/actions';
  */
 
 export function getPokemons() {
+  const payload = true;
+  store.dispatch(fetchPokemonsRequest(payload));
   return axios.get('http://pokeapi.co/api/v2/pokemon')
     .then(response => {
-      store.dispatch(getPokemonsSuccess(response.data.results));
+      store.dispatch(fetchPokemonsSuccess(response.data.results));
       return response;  
-    });
+    }).catch(function(e) {
+      store.dispatch(fetchPokemonsFailure(payload));
+      console.log(e);
+    })
 }
 
 /**
@@ -24,6 +29,6 @@ export function getPokemons() {
 export function getPokemon(pokemonId) {
   return axios.get('http://pokeapi.co/api/v2/pokemon/' + pokemonId)
     .then(response => {
-      store.dispatch(getPokemonSuccess(response.data));
+      store.dispatch(fetchPokemonSuccess(response.data));
     })
 }

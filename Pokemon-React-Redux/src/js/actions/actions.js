@@ -1,10 +1,47 @@
 import * as types from '../actions/actionTypes';
 
-export function getPokemonsSuccess(pokemons) {
-    //console.log(marvels)
+
+/* FETCH POKEMONS */
+export function fetchPokemonsSuccess(pokemons) {
     return {
-        type: types.GET_POKEMONS_SUCCESS,
+        type: types.FETCH_POKEMONS_SUCCESS,
         pokemons
+    }
+}
+
+export function fetchPokemonsRequest(payload) {
+    return {
+        type: types.FETCH_POKEMONS_REQUEST,
+        payload
+    }
+}
+
+export function fetchPokemonsFailure(payload) {
+    return {
+        type: types.FETCH_POKEMONS_FAILURE,
+        payload
+    }
+}
+
+/* FETCH POKEMON */
+export function fetchPokemonSuccess(pokemon) {
+    return {
+        type: types.FETCH_POKEMON_SUCCESS,
+        pokemon
+    }
+}
+
+export function fetchPokemonRequest(payload) {
+    return {
+        type: types.FETCH_POKEMON_REQUEST,
+        payload
+    }
+}
+
+export function fetchPokemonFailure(payload) {
+    return {
+        type: types.FETCH_POKEMON_FAILURE,
+        payload
     }
 }
 

@@ -17,18 +17,18 @@ const PokemonsContainer = React.createClass({
     return (
       <div>
         <PokemonsFiltering onChange={setVisibleFilter.bind(this)} refreshApp={pokemonApi.getPokemons}/>
-        <PokemonsList pokemons={this.props.pokemons} />
+        <PokemonsList pokemons={this.props.pokemons} pokemonsStates={this.props.pokemonsStates} />
       </div>
     );
   }  
 })
 
 const getVisiblePokemons = (pokemons, theFilter) => {
-
+  
   function pokExists (pok) {
     return (pok.name.indexOf(theFilter.toLowerCase()) != -1)
   }
-  if(theFilter !== undefined) {
+  if(theFilter !== undefined && pokemons !== undefined) {
     let pokTrouves = pokemons.filter(pokExists)
     return pokTrouves;
   } else {
@@ -46,8 +46,10 @@ const setVisibleFilter = function(filter) {
 }
 
 const mapStateToProps = function(store) {
+  console.log(store.pokemonsState.pokemons)
   return {
-    pokemons: getVisiblePokemons(store.pokemonsState.pokemons, store.visibilityFilterState.filter),
+    pokemonsStates: store.pokemonsState.pokemons,
+    pokemons: getVisiblePokemons(store.pokemonsState.pokemons.items, store.visibilityFilterState.filter),
     filter: store.visibilityFilterState.filter
   };
 };

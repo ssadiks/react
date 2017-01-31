@@ -27,8 +27,9 @@ const PokemonContainer = React.createClass({
 
 
 const mapStateToProps = function(store) {
+  console.log(store.pokemonsState.pokemon)
   return {
-    pokemon: store.pokemonsState.pokemon
+    pokemon: store.pokemonsState.pokemon.infos
   }
 }
 
