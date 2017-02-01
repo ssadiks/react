@@ -12,11 +12,13 @@ const PokemonsContainer = React.createClass({
   /* Get Posts */
   componentDidMount() {
     pokemonApi.getPokemons();
+    store.dispatch(setVisibilityFilter(''));
+    console.log('pokemoSSSDidMount');
   },
   render() {
     return (
       <div>
-        <PokemonsFiltering onChange={setVisibleFilter.bind(this)} refreshApp={pokemonApi.getPokemons}/>
+        <PokemonsFiltering onChange={setVisibleFilter.bind(this)} refreshApp={refreshApp}/>
         <PokemonsList pokemons={this.props.pokemons} pokemonsStates={this.props.pokemonsStates} />
       </div>
     );
@@ -38,6 +40,7 @@ const getVisiblePokemons = (pokemons, theFilter) => {
 }
 
 const refreshApp = function() {
+  store.dispatch(setVisibilityFilter(''));
   console.log('refresh')
 }
 

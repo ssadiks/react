@@ -14,6 +14,7 @@ const PokemonContainer = React.createClass({
   componentDidMount() {
     let pokemonId = this.props.params.pokemonsId    
     pokemonApi.getPokemon(pokemonId)
+    console.log('pokemonDidMount');
   },
   render() {
     return (
