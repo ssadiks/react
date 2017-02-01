@@ -2,7 +2,7 @@ import axios from 'axios';
 import crypto from 'crypto';
 
 import store from '../store';
-import { fetchPokemonsRequest, fetchPokemonsSuccess, fetchPokemonsFailure, getPokemonSuccess, fetchPokemonSuccess } from '../actions/actions';
+import { fetchPokemonsRequest, fetchPokemonsSuccess, fetchPokemonsFailure, fetchPokemonRequest, fetchPokemonSuccess, fetchPokemonFailure } from '../actions/actions';
 
 
 /**
@@ -27,8 +27,13 @@ export function getPokemons() {
  */
 
 export function getPokemon(pokemonId) {
+  const payload = true;
+  store.dispatch(fetchPokemonRequest(payload));
   return axios.get('http://pokeapi.co/api/v2/pokemon/' + pokemonId)
     .then(response => {
       store.dispatch(fetchPokemonSuccess(response.data));
+    }).catch(function(e) {
+      store.dispatch(fetchPokemonFailure(payload));
+      console.log(e);
     })
 }

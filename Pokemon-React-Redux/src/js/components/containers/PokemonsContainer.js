@@ -46,7 +46,7 @@ const setVisibleFilter = function(filter) {
 }
 
 const mapStateToProps = function(store) {
-  console.log(store.pokemonsState.pokemons)
+  //console.log(store.pokemonsState.pokemons)
   return {
     pokemonsStates: store.pokemonsState.pokemons,
     pokemons: getVisiblePokemons(store.pokemonsState.pokemons.items, store.visibilityFilterState.filter),

@@ -45,12 +45,7 @@ export function fetchPokemonFailure(payload) {
     }
 }
 
-export function getPokemonSuccess(pokemon) {
-    return {
-        type: types.GET_POKEMON_SUCCESS,
-        pokemon
-    }
-}
+
 
 export function setVisibilityFilter(filter) {
     //console.log(filter)
