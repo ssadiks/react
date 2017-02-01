@@ -43,7 +43,7 @@ const pokemonReducer = function(state = initialState, action) {
             return Object.assign({}, state, { pokemon: { isFetching: true, didInvalidate: false, infos: {} } })
         case types.FETCH_POKEMON_SUCCESS:
             return Object.assign({}, state, { pokemon: { isFetching: false, didInvalidate: false, infos: action.pokemon } })
-        case types.FETCH_POKEMON_SUCCESS:
+        case types.FETCH_POKEMON_FAILURE:
             return Object.assign({}, state, { pokemon: { isFetching: false, didInvalidate: true, infos: {} } })
     }
     

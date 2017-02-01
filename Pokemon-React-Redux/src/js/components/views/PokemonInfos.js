@@ -25,8 +25,13 @@ const PokemonInfos = ({pokemon, pokemonStates}) => {
             </div>
             <div className="medium-8 columns">            
                 <AbilitiesList pokemon={pokemon} />
-            </div>
+            </div>            
         </div>
+        }
+        {pokemonStates.didInvalidate === true &&
+            <p className="error">
+                Une erreur s'est produite lors du chargement
+            </p>
         }
     </div>
     )
